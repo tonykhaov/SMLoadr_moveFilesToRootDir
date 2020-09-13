@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/tonykhaov/SMLoadr_flacConverter/issues"
   },
-  "homepage": "https://github.com/tonykhaov/SMLoadr_flacConverter#readme"
+  "homepage": "https://github.com/tonykhaov/SMLoadr_flacConverter#readme",
+  "dependencies": {
+    "fluent-ffmpeg": "^2.1.2"
+  }
 }
