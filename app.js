@@ -1,15 +1,9 @@
 const path = require("path");
-const fs = require("fs");
-const fsPromises = fs.promises;
+
+// HELPERS
+const { getFiles } = require("./helpers.js");
 
 const DOWNLOADS_DIR = path.join(__dirname, "/DOWNLOADS");
-
-function getFiles(folderName) {
-  return fsPromises.readdir(folderName, {}, (err, files) => {
-    if (err) return err;
-    return files;
-  });
-}
 
 (async () => {
   try {
