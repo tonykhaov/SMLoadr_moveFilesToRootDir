@@ -4,7 +4,7 @@ const fsPromises = fs.promises;
 
 const DOWNLOADS_DIR = path.join(__dirname, "/DOWNLOADS");
 
-function getArtistsFolders(downloadsDir) {
+function getArtists(downloadsDir) {
   return fsPromises.readdir(downloadsDir, {}, (err, files) => {
     if (err) return err;
     return files;
@@ -33,8 +33,8 @@ function getArtistsFolders(downloadsDir) {
 
 (async () => {
   try {
-    const artistsFolders = await getArtistsFolders(DOWNLOADS_DIR);
-    const artistsFoldersPaths = artistsFolders
+    const artists = await getArtists(DOWNLOADS_DIR);
+    const artistsPaths = artists
       .filter((fileName) => fileName !== ".DS_STORE")
       .map((fileName) => path.join(DOWNLOADS_DIR, fileName));
   } catch (e) {
