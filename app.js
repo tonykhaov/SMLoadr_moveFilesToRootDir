@@ -22,10 +22,22 @@ const DOWNLOADS_DIR = path.join(__dirname, "/DOWNLOADS");
 
       albumsPaths.forEach((albumPath) => {
         fs.readdir(albumPath, {}, (err, files) => {
-          const flacSongs = files
-            .filter((file) => /\.flac$/.test(file))
-            .map((song) => path.join(albumPath, song));
-          console.log(flacSongs);
+          const flacSongs = files.filter((file) => /\.flac$/.test(file));
+
+          flacSongs.forEach((flacSong) => {
+            const flacSongOldPath = path.join(albumPath, flacSong);
+            const flacSongsNewPath = path.join(
+              __dirname,
+              "ConvertedSongs",
+              flacSong
+            );
+            fs.rename(flacSongOldPath, flacSongsNewPath, (err) => {
+              if (err) return console.log(err);
+              console.log(
+                `${flacSong} was succesfully moved to ConvertedSongs folder`
+              );
+            });
+          });
         });
       });
     });
